@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:my_cover_ai_test/routes/app_router.dart';
+import 'package:my_cover_ai_test/src/shared/routes/app_router.dart';
 
 void main() {
   runApp(ProviderScope(child: const MyApp()));

@@ -3,10 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/data/inspection_view_model.dart';
-import 'package:my_cover_ai_test/utils/app_colors.dart';
-import 'package:my_cover_ai_test/utils/extensions.dart';
-import 'package:my_cover_ai_test/utils/sizing.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/data/inspection_view_model.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/preview_widget.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/step_timer_and_indicator.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/verifying_widget.dart';
+import 'package:my_cover_ai_test/src/shared/utils/app_colors.dart';
+import 'package:my_cover_ai_test/src/shared/utils/extensions.dart';
+import 'package:my_cover_ai_test/src/shared/utils/sizing.dart';
 
 final isVerifyingProvider = StateProvider<bool>((ref) => false);
 final verifiedStepsProvider =
@@ -63,69 +66,8 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
               height: double.infinity,
               fit: BoxFit.cover,
             ),
-            Align(
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 30),
-                child: Column(
-                  children: [
-                    AppSpacing.setVerticalSpace(200),
-                    Container(
-                      height: 40,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.whiteColor,
-                      ),
-                      child: Center(
-                        child: Text(
-                          '1:59',
-                          style: context.textTheme.displayLarge?.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.errorColor,
-                          ),
-                        ),
-                      ),
-                    ),
-                    AppSpacing.setVerticalSpace(20),
-                    Container(
-                      height: 300.height,
-                      width: 20.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.blackColor.withAlpha(50),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(3, (index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Container(
-                                height: 60.height,
-                                width: 60.width,
-                                decoration: BoxDecoration(
-                                  color: verifiedSteps[index]
-                                      ? AppColors.greenColor
-                                      : AppColors.grey1,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: Icon(
-                                  Icons.check,
-                                  size: 20,
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
-                            );
-                          }),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            StepTimerAndIndicator(
+              verifiedSteps: verifiedSteps,
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -137,104 +79,8 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
                   children: [
                     AppSpacing.setVerticalSpace(100),
                     isVerifying
-                        ? Column(
-                            children: [
-                              AppSpacing.setVerticalSpace(40),
-                              RichText(
-                                text: TextSpan(
-                                  text: 'Verifying  ',
-                                  style:
-                                      context.textTheme.displayLarge?.copyWith(
-                                    fontSize: 20,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.whiteColor,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text: 'Vehicle image ',
-                                      style: context.textTheme.displayLarge
-                                          ?.copyWith(
-                                        fontSize: 20,
-                                        height: 1.5,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.greenColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              AppSpacing.setVerticalSpace(40),
-                              RotationTransition(
-                                turns: _rotation,
-                                child: Image.asset(
-                                  'assets/images/verify_logo.png',
-                                ),
-                              ),
-                              AppSpacing.setVerticalSpace(40),
-                              Text(
-                                'Hold on while we verify\nyour image',
-                                textAlign: TextAlign.center,
-                                style: context.textTheme.displayLarge?.copyWith(
-                                  fontSize: 15,
-                                  height: 1.5,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
-                              AppSpacing.setVerticalSpace(20),
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              AppSpacing.setVerticalSpace(50),
-                              RichText(
-                                text: TextSpan(
-                                  text: 'Vehicle ',
-                                  style:
-                                      context.textTheme.displayLarge?.copyWith(
-                                    fontSize: 20,
-                                    height: 1.5,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.whiteColor,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text: step.viewStatus,
-                                      style: context.textTheme.displayLarge
-                                          ?.copyWith(
-                                        fontSize: 20,
-                                        height: 1.5,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.greenColor,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: 'View ',
-                                      style: context.textTheme.displayLarge
-                                          ?.copyWith(
-                                        fontSize: 20,
-                                        height: 1.5,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.whiteColor,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              AppSpacing.setVerticalSpace(50),
-                              Text(
-                                'Confirm Vehicle side view to\nmove to the next Vehicle view',
-                                style: context.textTheme.displayLarge?.copyWith(
-                                  fontSize: 15,
-                                  height: 1.5,
-                                  fontWeight: FontWeight.w500,
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
-                              AppSpacing.setVerticalSpace(50),
-                            ],
-                          ),
+                        ? VerifyingWidget(rotation: _rotation)
+                        : PreviewWidget(step: step),
                     AppSpacing.setVerticalSpace(100),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -315,32 +161,6 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-// import 'dart:io';
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:my_cover_ai_test/data/inspection_view_model.dart';
-// import 'package:my_cover_ai_test/routes/app_path.dart';
-// import 'package:my_cover_ai_test/utils/app_colors.dart';
-// import 'package:my_cover_ai_test/utils/extensions.dart';
-// import 'package:my_cover_ai_test/utils/sizing.dart';
-
-
-
-
-
 
 // final isVerifyingProvider = StateProvider<bool>((ref) => false);
 // final verifiedStepsProvider =

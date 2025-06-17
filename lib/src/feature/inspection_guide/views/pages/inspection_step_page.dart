@@ -1,11 +1,11 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/utils/app_colors.dart';
-import 'package:my_cover_ai_test/utils/extensions.dart';
-import 'package:my_cover_ai_test/utils/sizing.dart';
+import 'package:my_cover_ai_test/src/shared/utils/app_colors.dart';
+import 'package:my_cover_ai_test/src/shared/utils/extensions.dart';
+import 'package:my_cover_ai_test/src/shared/utils/sizing.dart';
 
-import '../data/inspection_steps_model.dart';
+import '../../../inspection_process/data/inspection_steps_model.dart';
 
 class InspectionStepPage extends StatelessWidget {
   final int step;

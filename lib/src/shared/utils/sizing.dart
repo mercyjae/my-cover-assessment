@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_cover_ai_test/utils/extensions.dart';
+import 'package:my_cover_ai_test/src/shared/utils/extensions.dart';
 
 class AppSpacing {
   const AppSpacing._();

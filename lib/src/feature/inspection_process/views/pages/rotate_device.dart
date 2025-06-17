@@ -2,9 +2,10 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/controllers/camera_controller.dart';
 
-final cameraControllerProvider =
-    StateProvider<CameraController?>((ref) => null);
+// final cameraControllerProvider =
+//     StateProvider<CameraController?>((ref) => null);
 
 class RotateDeviceScreen extends ConsumerStatefulWidget {
   const RotateDeviceScreen({super.key});

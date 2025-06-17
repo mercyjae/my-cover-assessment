@@ -1,5 +1,5 @@
 // shared_data.dart
-import 'package:my_cover_ai_test/utils/app_assets.dart';
+import 'package:my_cover_ai_test/src/shared/utils/app_assets.dart';
 
 class InspectionViewModel {
   final String viewStatus;

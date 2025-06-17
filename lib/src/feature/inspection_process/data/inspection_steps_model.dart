@@ -1,5 +1,5 @@
-import 'package:my_cover_ai_test/pages/inspection_step_page.dart';
-import 'package:my_cover_ai_test/utils/app_assets.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_guide/views/pages/inspection_step_page.dart';
+import 'package:my_cover_ai_test/src/shared/utils/app_assets.dart';
 
 class InspectionModel {
   final List<StyledTextSegment> instructionSegments;

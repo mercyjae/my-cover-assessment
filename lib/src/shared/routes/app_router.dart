@@ -1,12 +1,12 @@
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/pages/home_page.dart';
-import 'package:my_cover_ai_test/pages/image_capture_confirm_page.dart';
-import 'package:my_cover_ai_test/pages/image_capture_start_page.dart';
-import 'package:my_cover_ai_test/pages/image_capture_verify_page.dart';
-import 'package:my_cover_ai_test/pages/inspection_step_page.dart';
-import 'package:my_cover_ai_test/pages/rotate_device.dart';
-import 'package:my_cover_ai_test/pages/vehicle_overlay_start_screen.dart';
-import 'package:my_cover_ai_test/routes/app_path.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/home_page.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_confirm_page.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_start_page.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_verify_page.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_guide/views/pages/inspection_step_page.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/rotate_device.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/vehicle_overlay_start_screen.dart';
+import 'package:my_cover_ai_test/src/shared/routes/app_path.dart';
 
 class AppRouter {
   static final router = GoRouter(
