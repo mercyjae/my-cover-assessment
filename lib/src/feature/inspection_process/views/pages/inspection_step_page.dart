@@ -1,12 +1,12 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/style_stext_egment.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/style_text_segment.dart';
 import 'package:my_cover_ai_test/src/shared/utils/app_colors.dart';
 import 'package:my_cover_ai_test/src/shared/utils/extensions.dart';
 import 'package:my_cover_ai_test/src/shared/utils/sizing.dart';
 
-import '../../../inspection_process/model/inspection_steps_model.dart';
+import '../../model/inspection_steps_model.dart';
 
 class InspectionStepPage extends StatelessWidget {
   final int step;
@@ -249,8 +249,10 @@ class InspectionStepPage extends StatelessWidget {
                           )
                         : SizedBox(),
                     step == 6
-                        ? AppSpacing.setVerticalSpace(30)
-                        : AppSpacing.setVerticalSpace(100),
+                        ? AppSpacing.setVerticalSpace(50)
+                        : step == 1
+                            ? AppSpacing.setVerticalSpace(110)
+                            : AppSpacing.setVerticalSpace(120),
                     Text(
                       stepData.viewText,
                       style: context.textTheme.displayLarge?.copyWith(
@@ -281,7 +283,7 @@ class InspectionStepPage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12),
                                   child: Image.asset(stepData.image,
                                       width: double.infinity,
-                                      height: 220,
+                                      height: 200,
                                       fit: BoxFit.cover),
                                 ),
                               ),
@@ -296,7 +298,8 @@ class InspectionStepPage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      context.go('/inspect/step/${step - 1}');
+                      context.go('/rotate');
+                      // context.go('/inspect/step/${step - 1}');
                     },
                     child: Text(
                       "Skip",
@@ -309,9 +312,11 @@ class InspectionStepPage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       if (isLast) {
-                        context.go('/rotate');
+                       context.go('/rotate');
                       } else {
-                        context.push('/inspect/step/${step + 1}');
+                        context.pushNamed('inspect-step',
+                            pathParameters: {'stepId': '${step + 1}'});
+                        // context.push('/inspect/step/${step + 1}');
                       }
                     },
                     style: ElevatedButton.styleFrom(

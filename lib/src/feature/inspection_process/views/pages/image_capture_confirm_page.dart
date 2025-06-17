@@ -23,9 +23,8 @@ class ImageCaptureConfirmScreen extends ConsumerWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                border: Border.all(width: 3, color: AppColors.whiteColor)),
+          RotatedBox(
+            quarterTurns: 3,
             child: Image.file(
               File(imagePath),
               width: double.infinity,
@@ -33,6 +32,42 @@ class ImageCaptureConfirmScreen extends ConsumerWidget {
               fit: BoxFit.cover,
             ),
           ),
+          // Align(
+          //   alignment: Alignment.center,
+          //   child: DottedBorder(
+          //     color: AppColors.blackColor,
+          //     strokeWidth: 3,
+          //     dashPattern: [10, 10],
+          //     borderType: BorderType.RRect,
+          //     radius: const Radius.circular(12),
+          //     child: SizedBox(
+          //       width: 400,
+          //       height: 250,
+          //       child: RotatedBox(
+          //         quarterTurns: 3,
+          //         child: AspectRatio(
+          //           aspectRatio: 3 / 4,
+          //           child: Container(
+          //             decoration: BoxDecoration(
+          //               borderRadius: BorderRadius.circular(12),
+          //               color: Colors.white,
+          //             ),
+          //             child: Padding(
+          //               padding: const EdgeInsets.all(8.0),
+          //               child: ClipRRect(
+          //                 borderRadius: BorderRadius.circular(12),
+          //                 child: Image.file(
+          //                   File(imagePath),
+          //                   fit: BoxFit.cover,
+          //                 ),
+          //               ),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.only(left: 10, top: 30),
             child: StepTimerAndIndicator(

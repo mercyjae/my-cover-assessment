@@ -1,5 +1,6 @@
 import 'package:camera/camera.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/service/camera_service.dart';
 
 final cameraControllerProvider =
     StateNotifierProvider<CameraControllerNotifier, CameraController?>(
@@ -20,14 +21,4 @@ class CameraControllerNotifier extends StateNotifier<CameraController?> {
   }
 }
 
-class CameraService {
-  static Future<CameraController> setupBackCamera() async {
-    final cameras = await availableCameras();
-    final backCamera = cameras.firstWhere(
-      (c) => c.lensDirection == CameraLensDirection.back,
-    );
-    final controller = CameraController(backCamera, ResolutionPreset.medium);
-    await controller.initialize();
-    return controller;
-  }
-}
+

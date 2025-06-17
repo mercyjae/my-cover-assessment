@@ -24,7 +24,7 @@ class ImageCaptureStartScreen extends ConsumerWidget {
     final step = inspectionSteps[stepIndex];
     final controller = ref.watch(cameraControllerProvider);
 
-    if (controller == null || !controller.value.isInitialized) {
+    if (!controller!.value.isInitialized) {
       return const Scaffold(
         body: Center(child: CircularProgressIndicator(color: Colors.white)),
       );
@@ -34,7 +34,10 @@ class ImageCaptureStartScreen extends ConsumerWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            Positioned.fill(child: CameraPreview(controller)),
+            Positioned.fill(
+                child: AspectRatio(
+                    aspectRatio: controller.value.aspectRatio,
+                    child: CameraPreview(controller))),
             StepTimerAndIndicator(
               verifiedSteps: verifiedSteps,
             ),

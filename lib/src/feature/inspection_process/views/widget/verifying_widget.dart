@@ -14,52 +14,49 @@ class VerifyingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          AppSpacing.setVerticalSpace(40),
-          RichText(
-            text: TextSpan(
-              text: 'Verifying  ',
-              style:
-                  context.textTheme.displayLarge?.copyWith(
-                fontSize: 20,
-                height: 1.5,
-                fontWeight: FontWeight.w600,
-                color: AppColors.whiteColor,
-              ),
-              children: [
-                TextSpan(
-                  text: 'Vehicle image ',
-                  style: context.textTheme.displayLarge
-                      ?.copyWith(
-                    fontSize: 20,
-                    height: 1.5,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.greenColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          AppSpacing.setVerticalSpace(40),
-          RotationTransition(
-            turns: _rotation,
-            child: Image.asset(
-              'assets/images/verify_logo.png',
-            ),
-          ),
-          AppSpacing.setVerticalSpace(40),
-          Text(
-            'Hold on while we verify\nyour image',
-            textAlign: TextAlign.center,
+      children: [
+        AppSpacing.setVerticalSpace(40),
+        RichText(
+          text: TextSpan(
+            text: 'Verifying  ',
             style: context.textTheme.displayLarge?.copyWith(
-              fontSize: 15,
+              fontSize: 20,
               height: 1.5,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               color: AppColors.whiteColor,
             ),
+            children: [
+              TextSpan(
+                text: 'Vehicle image ',
+                style: context.textTheme.displayLarge?.copyWith(
+                  fontSize: 20,
+                  height: 1.5,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.greenColor,
+                ),
+              ),
+            ],
           ),
-          AppSpacing.setVerticalSpace(20),
-        ],
-      );
+        ),
+        AppSpacing.setVerticalSpace(30),
+        RotationTransition(
+          turns: _rotation,
+          child: Image.asset(
+            'assets/images/verify_logo.png',
+          ),
+        ),
+        AppSpacing.setVerticalSpace(30),
+        Text(
+          'Hold on while we verify\nyour image',
+          textAlign: TextAlign.center,
+          style: context.textTheme.displayLarge?.copyWith(
+            fontSize: 15,
+            height: 1.5,
+            fontWeight: FontWeight.w500,
+            color: AppColors.whiteColor,
+          ),
+        ),
+      ],
+    );
   }
 }

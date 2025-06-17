@@ -85,7 +85,16 @@ class _RotateDeviceScreenState extends ConsumerState<RotateDeviceScreen>
       backgroundColor: Colors.black,
       body: Stack(
         children: [
-          CameraPreview(controller),
+          SizedBox.expand(
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: SizedBox(
+                width: controller.value.previewSize!.height,
+                height: controller.value.previewSize!.width,
+                child: CameraPreview(controller),
+              ),
+            ),
+          ),
           if (isPortrait)
             const Center(
               child: Column(

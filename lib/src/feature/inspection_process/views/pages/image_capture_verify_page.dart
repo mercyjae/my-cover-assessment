@@ -57,14 +57,18 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
     final verifiedSteps = ref.watch(verifiedStepsProvider);
 
     return Scaffold(
+      backgroundColor: Colors.red,
       body: SafeArea(
         child: Stack(
           children: [
-            Image.file(
-              File(widget.imagePath),
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.cover,
+            RotatedBox(
+              quarterTurns: 3,
+              child: Image.file(
+                File(widget.imagePath),
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
             StepTimerAndIndicator(
               verifiedSteps: verifiedSteps,
@@ -78,7 +82,7 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
                 child: Column(
                   children: [
                     AppSpacing.setVerticalSpace(100),
-                    isVerifying
+                    !isVerifying
                         ? VerifyingWidget(rotation: _rotation)
                         : PreviewWidget(step: step),
                     AppSpacing.setVerticalSpace(100),
@@ -110,9 +114,9 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
                         AppSpacing.setHorizontalSpace(10),
                         ElevatedButton(
                           onPressed:
-                              // isVerifying
-                              //     ? null
-                              //     :
+                              //    isVerifying
+                              // ? null
+                              // :
                               () {
                             ref.read(isVerifyingProvider.notifier).state = true;
                             Future.delayed(const Duration(seconds: 3), () {
@@ -127,6 +131,7 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
                                   true;
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
+                                    backgroundColor: AppColors.greenColor,
                                     content: Text("Verifying image...")),
                               );
                               ref.read(isVerifyingProvider.notifier).state =
@@ -146,7 +151,9 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
                               borderRadius: BorderRadius.circular(8),
                             ),
                             foregroundColor: AppColors.whiteColor,
-                            backgroundColor: AppColors.greenColor,
+                            backgroundColor: isVerifying
+                                ? AppColors.greenColor.withOpacity(0.2)
+                                : AppColors.greenColor,
                             padding: const EdgeInsets.symmetric(
                               horizontal: 40,
                               vertical: 12,

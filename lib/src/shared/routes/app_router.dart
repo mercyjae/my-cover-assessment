@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/src/feature/inspection_guide/views/pages/inspection_step_page.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/inspection_step_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/home_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_confirm_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_start_page.dart';

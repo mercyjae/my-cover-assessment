@@ -1,4 +1,4 @@
-import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/style_text_egment.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/style_text_segment.dart';
 import 'package:my_cover_ai_test/src/shared/utils/app_assets.dart';
 import 'package:my_cover_ai_test/src/shared/utils/enum.dart';
 
