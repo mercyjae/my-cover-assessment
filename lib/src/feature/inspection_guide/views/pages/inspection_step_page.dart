@@ -1,11 +1,12 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/style_stext_egment.dart';
 import 'package:my_cover_ai_test/src/shared/utils/app_colors.dart';
 import 'package:my_cover_ai_test/src/shared/utils/extensions.dart';
 import 'package:my_cover_ai_test/src/shared/utils/sizing.dart';
 
-import '../../../inspection_process/data/inspection_steps_model.dart';
+import '../../../inspection_process/model/inspection_steps_model.dart';
 
 class InspectionStepPage extends StatelessWidget {
   final int step;
@@ -339,49 +340,5 @@ class InspectionStepPage extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-enum StyledTextType {
-  normal,
-  bold,
-  highlightedBlue,
-  highlightedGreen,
-}
-
-class StyledTextSegment {
-  final String text;
-  final StyledTextType type;
-
-  const StyledTextSegment({
-    required this.text,
-    this.type = StyledTextType.normal,
-  });
-}
-
-TextStyle getTextStyle(
-  StyledTextType type,
-) {
-  const base = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    color: Colors.black87,
-    height: 1.2,
-  );
-  switch (type) {
-    case StyledTextType.bold:
-      return base.copyWith(fontWeight: FontWeight.w500, fontSize: 16);
-    case StyledTextType.highlightedBlue:
-      return base.copyWith(
-          fontWeight: FontWeight.w600, color: AppColors.blueColor);
-    case StyledTextType.highlightedGreen:
-      return base.copyWith(
-          fontWeight: FontWeight.w600,
-          color: AppColors.greenColor,
-          fontSize: 16);
-    case StyledTextType.normal:
-      return base.copyWith(fontWeight: FontWeight.w400, fontSize: 16);
-    default:
-      return base;
   }
 }

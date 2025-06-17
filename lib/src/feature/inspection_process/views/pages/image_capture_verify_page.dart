@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/src/feature/inspection_process/data/inspection_view_model.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/model/inspection_view_model.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/preview_widget.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/step_timer_and_indicator.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/verifying_widget.dart';
@@ -87,7 +87,12 @@ class _ImageCaptureVerifyPageState extends ConsumerState<ImageCaptureVerifyPage>
                       children: [
                         ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).pop();
+                            context.goNamed(
+                              'start-camera',
+                              pathParameters: {
+                                'stepIndex': widget.stepIndex.toString(),
+                              },
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             shape: RoundedRectangleBorder(

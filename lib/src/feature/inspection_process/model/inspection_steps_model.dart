@@ -1,5 +1,6 @@
-import 'package:my_cover_ai_test/src/feature/inspection_guide/views/pages/inspection_step_page.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/style_text_egment.dart';
 import 'package:my_cover_ai_test/src/shared/utils/app_assets.dart';
+import 'package:my_cover_ai_test/src/shared/utils/enum.dart';
 
 class InspectionModel {
   final List<StyledTextSegment> instructionSegments;
@@ -105,11 +106,6 @@ final List<InspectionModel> inspectionSteps = [
           text: "Chassis no.",
           type: StyledTextType.highlightedGreen,
         ),
-        // StyledTextSegment(
-        //     text: ", ensuring it fills about ", type: StyledTextType.normal),
-        // StyledTextSegment(text: "80%", type: StyledTextType.highlightedGreen),
-        // StyledTextSegment(
-        //     text: " of your camera screen.", type: StyledTextType.normal),
       ],
       image: AppAssets.chasis),
   InspectionModel(

@@ -4,14 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:my_cover_ai_test/src/shared/routes/app_router.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  runApp(ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
+  // final AppLinksDeepLink _appLinksDeepLink = AppLinksDeepLink.instance;
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // _appLinksDeepLink.initDeepLinks();
     return ScreenUtilInit(
         designSize: const Size(375, 812),
         builder: (context, child) {

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/src/feature/inspection_process/data/inspection_view_model.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/model/inspection_view_model.dart';
 import 'package:my_cover_ai_test/src/shared/utils/app_colors.dart';
 import 'package:my_cover_ai_test/src/shared/utils/extensions.dart';
 import 'package:my_cover_ai_test/src/shared/utils/sizing.dart';

@@ -1,22 +1,25 @@
 import 'package:go_router/go_router.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_guide/views/pages/inspection_step_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/home_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_confirm_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_start_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_verify_page.dart';
-import 'package:my_cover_ai_test/src/feature/inspection_guide/views/pages/inspection_step_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/rotate_device.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/vehicle_overlay_start_screen.dart';
 import 'package:my_cover_ai_test/src/shared/routes/app_path.dart';
 
 class AppRouter {
   static final router = GoRouter(
+    // routerNeglect: true,
+    // debugLogDiagnostics: true,
     initialLocation:
         //'/image/capture/confirm',
         //'/rotate',
         '/inspect/step/1',
     routes: [
       GoRoute(
-        path: '/',
+        path: AppPath.home,
+        name: 'home',
         builder: (context, state) => const HomePage(),
       ),
       GoRoute(
@@ -25,6 +28,7 @@ class AppRouter {
         builder: (context, state) {
           final stepId =
               int.tryParse(state.pathParameters['stepId'] ?? '1') ?? 1;
+          print("🛬 Navigated to inspect step: $stepId");
           return InspectionStepPage(step: stepId);
         },
       ),

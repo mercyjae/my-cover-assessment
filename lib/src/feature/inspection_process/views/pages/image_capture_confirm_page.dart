@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:my_cover_ai_test/src/feature/inspection_process/data/inspection_steps_model.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/model/inspection_steps_model.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_verify_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/step_timer_and_indicator.dart';
 import 'package:my_cover_ai_test/src/shared/utils/app_colors.dart';

@@ -4,7 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/controllers/camera_controller.dart';
-import 'package:my_cover_ai_test/src/feature/inspection_process/data/inspection_view_model.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/model/inspection_view_model.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_verify_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/instruction_start_guide.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/step_timer_and_indicator.dart';
