@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +22,7 @@ class ImageCaptureConfirmScreen extends ConsumerWidget {
     final verifiedSteps = ref.watch(verifiedStepsProvider);
     final step = inspectionSteps[stepIndex];
     return Scaffold(
+      backgroundColor: AppColors.grey1.withAlpha(90),
       body: Stack(
         children: [
           RotatedBox(
@@ -32,50 +34,63 @@ class ImageCaptureConfirmScreen extends ConsumerWidget {
               fit: BoxFit.cover,
             ),
           ),
-          // Align(
-          //   alignment: Alignment.center,
-          //   child: DottedBorder(
-          //     color: AppColors.blackColor,
-          //     strokeWidth: 3,
-          //     dashPattern: [10, 10],
-          //     borderType: BorderType.RRect,
-          //     radius: const Radius.circular(12),
-          //     child: SizedBox(
-          //       width: 400,
-          //       height: 250,
-          //       child: RotatedBox(
-          //         quarterTurns: 3,
-          //         child: AspectRatio(
-          //           aspectRatio: 3 / 4,
-          //           child: Container(
-          //             decoration: BoxDecoration(
-          //               borderRadius: BorderRadius.circular(12),
-          //               color: Colors.white,
-          //             ),
-          //             child: Padding(
-          //               padding: const EdgeInsets.all(8.0),
-          //               child: ClipRRect(
-          //                 borderRadius: BorderRadius.circular(12),
-          //                 child: Image.file(
-          //                   File(imagePath),
-          //                   fit: BoxFit.cover,
-          //                 ),
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10, top: 30),
+          Positioned(
+            left: 140,
+            top: 100,
+            child: Align(
+              alignment: Alignment.center,
+              child: DottedBorder(
+                color: AppColors.blackColor,
+                strokeWidth: 2,
+                dashPattern: [12, 12],
+                borderType: BorderType.RRect,
+                radius: const Radius.circular(12),
+                child: SizedBox(
+                  width: 350,
+                  height: 200,
+                  child: RotatedBox(
+                    quarterTurns: 3,
+                    child: AspectRatio(
+                      aspectRatio: 3 / 4,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.file(
+                            File(imagePath),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 60),
+              child: Container(
+                height: double.infinity,
+                width: 35.width,
+                decoration: BoxDecoration(
+                  color: AppColors.blackColor.withAlpha(90),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 70,
             child: StepTimerAndIndicator(
               verifiedSteps: verifiedSteps,
             ),
           ),
           GestureDetector(
-            onTap: () async {
+            onTap: () {
               context.pushNamed('image-capture-verify',
                   extra: imagePath,
                   pathParameters: {'stepIndex': stepIndex.toString()});

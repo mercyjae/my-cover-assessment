@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/model/inspection_view_model.dart';
@@ -22,8 +21,8 @@ class InstructionStartGuide extends StatelessWidget {
       alignment: Alignment.centerRight,
       child: Container(
         height: double.infinity,
-        width: 150.width,
-        color: AppColors.grey1.withAlpha(90),
+        width: 140.width,
+        color: AppColors.blackColor.withAlpha(50),
         child: Column(
           children: [
             AppSpacing.setVerticalSpace(100),
@@ -54,7 +53,7 @@ class InstructionStartGuide extends StatelessWidget {
                 ])),
             AppSpacing.setVerticalSpace(10),
             Text(
-              'Take Vehicle ${step.viewTitle} view',
+              'Take vehicle ${step.viewTitle} view',
               style: context.textTheme.displayLarge?.copyWith(
                   fontSize: 15,
                   height: 1.5,
@@ -78,13 +77,14 @@ class InstructionStartGuide extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
+                    minimumSize: Size(100, 40),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 32, vertical: 12),
+                        horizontal: 20, vertical: 12),
                   ),
                   child: Text(
                     "Go back",
@@ -99,17 +99,16 @@ class InstructionStartGuide extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {
                     context.pushNamed('image-capture-start',
-                        pathParameters: {
-                          'stepIndex': stepIndex.toString()
-                        });
+                        pathParameters: {'stepIndex': stepIndex.toString()});
                   },
                   style: ElevatedButton.styleFrom(
+                    minimumSize: Size(100, 40),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
                     backgroundColor: AppColors.greenColor,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 12),
+                        horizontal: 20, vertical: 12),
                   ),
                   child: Text(
                     "Start",

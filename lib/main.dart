@@ -8,12 +8,10 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // final AppLinksDeepLink _appLinksDeepLink = AppLinksDeepLink.instance;
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // _appLinksDeepLink.initDeepLinks();
     return ScreenUtilInit(
         designSize: const Size(375, 812),
         builder: (context, child) {

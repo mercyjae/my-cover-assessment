@@ -8,14 +8,19 @@ import 'package:my_cover_ai_test/src/shared/utils/sizing.dart';
 
 import '../../model/inspection_steps_model.dart';
 
-class InspectionStepPage extends StatelessWidget {
+class InspectionStepPage extends StatefulWidget {
   final int step;
   const InspectionStepPage({super.key, required this.step});
 
   @override
+  State<InspectionStepPage> createState() => _InspectionStepPageState();
+}
+
+class _InspectionStepPageState extends State<InspectionStepPage> {
+  @override
   Widget build(BuildContext context) {
-    final stepData = inspectionSteps[step - 1];
-    final isLast = step == inspectionSteps.length;
+    final stepData = inspectionSteps[widget.step - 1];
+    final isLast = widget.step == inspectionSteps.length;
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -75,7 +80,7 @@ class InspectionStepPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: List.generate(8, (i) {
-                        final isActive = (i + 1) == step;
+                        final isActive = (i + 1) == widget.step;
                         return Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 2.0),
@@ -145,7 +150,7 @@ class InspectionStepPage extends StatelessWidget {
                         }).toList(),
                       ),
                     ),
-                    step == 6
+                    widget.step == 6
                         ? Column(
                             children: [
                               AppSpacing.setVerticalSpace(10),
@@ -248,9 +253,9 @@ class InspectionStepPage extends StatelessWidget {
                             ],
                           )
                         : SizedBox(),
-                    step == 6
+                    widget.step == 6
                         ? AppSpacing.setVerticalSpace(50)
-                        : step == 1
+                        : widget.step == 1
                             ? AppSpacing.setVerticalSpace(110)
                             : AppSpacing.setVerticalSpace(120),
                     Text(
@@ -261,7 +266,7 @@ class InspectionStepPage extends StatelessWidget {
                           color: AppColors.grey1),
                     ),
                     AppSpacing.setVerticalSpace(15),
-                    step == 1
+                    widget.step == 1
                         ? ClipRRect(
                             borderRadius: BorderRadius.circular(12),
                             child: Image.asset(stepData.image,
@@ -312,10 +317,10 @@ class InspectionStepPage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {
                       if (isLast) {
-                       context.go('/rotate');
+                        context.go('/rotate');
                       } else {
                         context.pushNamed('inspect-step',
-                            pathParameters: {'stepId': '${step + 1}'});
+                            pathParameters: {'stepId': '${widget.step + 1}'});
                         // context.push('/inspect/step/${step + 1}');
                       }
                     },

@@ -4,9 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/controllers/camera_controller.dart';
 
-// final cameraControllerProvider =
-//     StateProvider<CameraController?>((ref) => null);
-
 class RotateDeviceScreen extends ConsumerStatefulWidget {
   const RotateDeviceScreen({super.key});
 
@@ -16,34 +13,6 @@ class RotateDeviceScreen extends ConsumerStatefulWidget {
 
 class _RotateDeviceScreenState extends ConsumerState<RotateDeviceScreen>
     with WidgetsBindingObserver {
-  // late Future<void> _initializeControllerFuture;
-  // bool hasNavigated = false;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   WidgetsBinding.instance.addObserver(this);
-  //   _initializeCamera();
-  // }
-
-  // Future<void> _initializeCamera() async {
-  //   final cameras = await availableCameras();
-  //   final backCamera =
-  //       cameras.firstWhere((c) => c.lensDirection == CameraLensDirection.back);
-  //   final controller = CameraController(backCamera, ResolutionPreset.medium);
-  //   ref.read(cameraControllerProvider.notifier).state = controller;
-  //   _initializeControllerFuture = controller.initialize();
-  //   await _initializeControllerFuture;
-  //   setState(() {});
-  // }
-
-  // @override
-  // void dispose() {
-  //   WidgetsBinding.instance.removeObserver(this);
-  //   ref.read(cameraControllerProvider)?.dispose();
-  //   super.dispose();
-  // }
-
   bool hasNavigated = false;
 
   @override
@@ -56,6 +25,10 @@ class _RotateDeviceScreenState extends ConsumerState<RotateDeviceScreen>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+
+    final controller = ref.read(cameraControllerProvider);
+    controller?.dispose();
+
     super.dispose();
   }
 
@@ -72,7 +45,6 @@ class _RotateDeviceScreenState extends ConsumerState<RotateDeviceScreen>
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
     if (!isPortrait && !hasNavigated) {
-      print('i am');
       hasNavigated = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) {

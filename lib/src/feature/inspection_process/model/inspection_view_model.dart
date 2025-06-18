@@ -17,20 +17,18 @@ class InspectionViewModel {
 
 final List<InspectionViewModel> inspectionView = [
   InspectionViewModel(
-    viewStatus: 'Left Side',
-    viewTitle: 'left',
-    instruction: 'Take picture of your vehicle\'s left side view.',
-    overlayAsset: AppAssets.newLeftView
-  ),
+      viewStatus: 'Left Side',
+      viewTitle: 'left',
+      instruction: 'Take picture of your vehicle\'s left side view.',
+      overlayAsset: AppAssets.newLeftView),
   InspectionViewModel(
-    viewStatus: 'Right Side',
-    viewTitle: 'right',
-    instruction: 'Take picture of your vehicle\'s right side view.',
-    overlayAsset:  AppAssets.newRightView),
+      viewStatus: 'Right Side',
+      viewTitle: 'right',
+      instruction: 'Take picture of your vehicle\'s right side view.',
+      overlayAsset: AppAssets.newRightView),
   InspectionViewModel(
-    viewStatus: 'Front Side',
-    viewTitle: 'front',
-    instruction: 'Take picture of your vehicle\'s front view.',
-    overlayAsset:  AppAssets.newFrontView
-  ),
+      viewStatus: 'Front Side',
+      viewTitle: 'front',
+      instruction: 'Take picture of your vehicle\'s front view.',
+      overlayAsset: AppAssets.newFrontView),
 ];

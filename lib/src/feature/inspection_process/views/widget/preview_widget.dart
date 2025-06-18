@@ -15,56 +15,51 @@ class PreviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          AppSpacing.setVerticalSpace(50),
-          RichText(
-            text: TextSpan(
-              text: 'Vehicle ',
-              style:
-                  context.textTheme.displayLarge?.copyWith(
-                fontSize: 20,
-                height: 1.5,
-                fontWeight: FontWeight.w600,
-                color: AppColors.whiteColor,
-              ),
-              children: [
-                TextSpan(
-                  text: step.viewStatus,
-                  style: context.textTheme.displayLarge
-                      ?.copyWith(
-                    fontSize: 20,
-                    height: 1.5,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.greenColor,
-                  ),
-                ),
-                TextSpan(
-                  text: 'View ',
-                  style: context.textTheme.displayLarge
-                      ?.copyWith(
-                    fontSize: 20,
-                    height: 1.5,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.whiteColor,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          AppSpacing.setVerticalSpace(50),
-          Text(
-            'Confirm Vehicle side view to\nmove to the next Vehicle view',
+      children: [
+        AppSpacing.setVerticalSpace(50),
+        RichText(
+          text: TextSpan(
+            text: 'Vehicle ',
             style: context.textTheme.displayLarge?.copyWith(
-              fontSize: 15,
+              fontSize: 20,
               height: 1.5,
-              fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w600,
               color: AppColors.whiteColor,
             ),
+            children: [
+              TextSpan(
+                text: step.viewStatus,
+                style: context.textTheme.displayLarge?.copyWith(
+                  fontSize: 20,
+                  height: 1.5,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.greenColor,
+                ),
+              ),
+              TextSpan(
+                text: ' View ',
+                style: context.textTheme.displayLarge?.copyWith(
+                  fontSize: 20,
+                  height: 1.5,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.whiteColor,
+                ),
+              ),
+            ],
           ),
-          AppSpacing.setVerticalSpace(50),
-        ],
-      );
+        ),
+        AppSpacing.setVerticalSpace(50),
+        Text(
+          'Confirm Vehicle side view to\nmove to the next Vehicle view',
+          style: context.textTheme.displayLarge?.copyWith(
+            fontSize: 15,
+            height: 1.5,
+            fontWeight: FontWeight.w500,
+            color: AppColors.whiteColor,
+          ),
+        ),
+        AppSpacing.setVerticalSpace(50),
+      ],
+    );
   }
 }
-
-

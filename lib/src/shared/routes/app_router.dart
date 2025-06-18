@@ -28,7 +28,7 @@ class AppRouter {
         builder: (context, state) {
           final stepId =
               int.tryParse(state.pathParameters['stepId'] ?? '1') ?? 1;
-          print("🛬 Navigated to inspect step: $stepId");
+ 
           return InspectionStepPage(step: stepId);
         },
       ),

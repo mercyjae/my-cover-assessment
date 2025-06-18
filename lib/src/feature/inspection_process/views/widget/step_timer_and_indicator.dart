@@ -15,27 +15,37 @@ class StepTimerAndIndicator extends StatelessWidget {
         children: [
           AppSpacing.setVerticalSpace(200),
           Container(
-            height: 40,
-            width: 30,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.whiteColor,
+              color: AppColors.errorColor,
             ),
-            child: Center(
-              child: Text(
-                '1:59',
-                style: context.textTheme.displayLarge?.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.errorColor,
+            child: Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Container(
+                height: 40,
+                width: 30,
+                margin: EdgeInsets.all(2),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.whiteColor,
+                ),
+                child: Center(
+                  child: Text(
+                    '1:59',
+                    style: context.textTheme.displayLarge?.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.errorColor,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-          AppSpacing.setVerticalSpace(20),
+          AppSpacing.setVerticalSpace(50),
           Container(
-            height: 300.height,
-            width: 20.width,
+            height: 280.height,
+            width: 17.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: AppColors.blackColor.withAlpha(50),
@@ -48,8 +58,8 @@ class StepTimerAndIndicator extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5),
                     child: Container(
-                      height: 60.height,
-                      width: 60.width,
+                      height: 57.height,
+                      width: 57.width,
                       decoration: BoxDecoration(
                         color: verifiedSteps[index]
                             ? AppColors.greenColor
@@ -57,7 +67,7 @@ class StepTimerAndIndicator extends StatelessWidget {
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(Icons.check,
-                          size: 20, color: AppColors.whiteColor),
+                          size: 18, color: AppColors.whiteColor),
                     ),
                   );
                 }),

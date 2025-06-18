@@ -38,8 +38,24 @@ class ImageCaptureStartScreen extends ConsumerWidget {
                 child: AspectRatio(
                     aspectRatio: controller.value.aspectRatio,
                     child: CameraPreview(controller))),
-            StepTimerAndIndicator(
-              verifiedSteps: verifiedSteps,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: Container(
+                  height: double.infinity,
+                  width: 35.width,
+                  decoration: BoxDecoration(
+                    color: AppColors.blackColor.withAlpha(90),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              left: 70,
+              child: StepTimerAndIndicator(
+                verifiedSteps: verifiedSteps,
+              ),
             ),
             GestureDetector(
               onTap: () async {
@@ -47,8 +63,6 @@ class ImageCaptureStartScreen extends ConsumerWidget {
                 context.pushNamed('image-capture-confirm',
                     extra: xFile.path,
                     pathParameters: {'stepIndex': stepIndex.toString()});
-
-                print('xfi ${xFile.path}');
               },
               child: Align(
                 alignment: Alignment.centerRight,
