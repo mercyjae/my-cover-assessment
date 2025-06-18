@@ -27,7 +27,9 @@ class _RotateDeviceScreenState extends ConsumerState<RotateDeviceScreen>
     WidgetsBinding.instance.removeObserver(this);
 
     final controller = ref.read(cameraControllerProvider);
-    controller?.dispose();
+    if (controller != null && controller.value.isInitialized) {
+      controller.dispose();
+    }
 
     super.dispose();
   }

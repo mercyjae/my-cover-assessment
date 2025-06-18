@@ -1,6 +1,8 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:my_cover_ai_test/src/feature/inspection_process/views/pages/image_capture_verify_page.dart';
 import 'package:my_cover_ai_test/src/feature/inspection_process/views/widget/style_text_segment.dart';
 import 'package:my_cover_ai_test/src/shared/utils/app_colors.dart';
 import 'package:my_cover_ai_test/src/shared/utils/extensions.dart';
@@ -8,15 +10,29 @@ import 'package:my_cover_ai_test/src/shared/utils/sizing.dart';
 
 import '../../model/inspection_steps_model.dart';
 
-class InspectionStepPage extends StatefulWidget {
+class InspectionStepPage extends ConsumerStatefulWidget {
   final int step;
   const InspectionStepPage({super.key, required this.step});
 
   @override
-  State<InspectionStepPage> createState() => _InspectionStepPageState();
+  ConsumerState<InspectionStepPage> createState() => _InspectionStepPageState();
 }
 
-class _InspectionStepPageState extends State<InspectionStepPage> {
+class _InspectionStepPageState extends ConsumerState<InspectionStepPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.step == 1) {
+      Future(() {
+        final totalSteps = inspectionSteps.length;
+        ref.read(verifiedStepsProvider.notifier).state =
+            List.generate(totalSteps, (_) => false);
+        ref.read(isVerifyingProvider.notifier).state = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final stepData = inspectionSteps[widget.step - 1];
